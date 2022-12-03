@@ -1,12 +1,8 @@
 import random
 # Welcome to the casino of Lawrence, where you win nothing and lose everything.
-# https://www.youtube.com/watch?v=th4OBktqK1I
-# slots
-# roulette?
-# blackjack
-# game = input("Which game would you like to play?\n1) Slots\n2) Roulette\n3) Blackjack")
+# credit to tech with tim
 
-NAME = "Law"
+#GLOBAL VARIABLES/DICTS
 MIN_BET = 5
 MAX_BET = 20
 ROWS = 3

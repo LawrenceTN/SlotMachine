@@ -1,6 +1,7 @@
+# Welcome to the casino, where you win nothing and lose everything.
+# Credit to tech with tim
+
 import random
-# Welcome to the casino of Lawrence, where you win nothing and lose everything.
-# credit to tech with tim
 
 #GLOBAL VARIABLES/DICTS
 MIN_BET = 5

@@ -27,12 +27,12 @@ def repeat(balance): # loop
     balance, bet = get_bet(balance)
     if bet == 0:
         return balance
-    print(f"\nYour bet is: {bet} Your balance is: {balance}.")
+    print(f"\nBet: {bet}\nBalance: {balance}")
     slots = play(ROWS, COLS, SYMBOL_COUNT)
     print_screen(slots)
     winnings = check_result(slots, bet, SYMBOLS_VALUES)
     balance += winnings
-    print(f"You won ${winnings}. Your balance is now {balance}")
+    print(f"You won ${winnings}. Your balance is now ${balance}")
     return balance
 
 def play(rows, cols, symbols):

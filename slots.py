@@ -23,6 +23,18 @@ SYMBOLS_VALUES = { # how much they're worth
     "&": 2
 }
 
+def repeat(balance):
+    balance, bet = get_bet(balance)
+    if bet == 0:
+        return balance
+    print(f"\nYour bet is: {bet} Your balance is: {balance}.")
+    slots = play(ROWS, COLS, SYMBOL_COUNT)
+    print_screen(slots)
+    winnings = check_result(slots, bet, SYMBOLS_VALUES)
+    balance += winnings
+    print(f"You won ${winnings}. Your balance is now {balance}")
+    return balance
+
 def play(rows, cols, symbols):
     all_symbols = []
     for symbol, symbol_count in symbols.items(): #key=symbol / value=symbol_count
@@ -121,14 +133,14 @@ def check_result(columns, bet, values):
 
 def main():
     balance = deposit()
-    balance, bet = get_bet(balance)
-    print(f"\nYour bet is: {bet} Your balance is: {balance}.")
-
-    slots = play(ROWS, COLS, SYMBOL_COUNT)
-    print_screen(slots)
-    winnings = check_result(slots, bet, SYMBOLS_VALUES)
-    balance += winnings
-    print(f"You won ${winnings}. Your balance is now {balance}")
-    
+    while True:
+        balance = repeat(balance)
+        if balance == 0:
+            print("Game over! Better luck next time")
+            break
+        answer = input("Press enter to play again or 'q' to quit ")
+        if (answer == 'q'):
+            break
+    print("Thank you for playing!")
 
 main()

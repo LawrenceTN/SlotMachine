@@ -23,7 +23,7 @@ SYMBOLS_VALUES = { # how much they're worth
     "&": 2
 }
 
-def repeat(balance):
+def repeat(balance): # loop
     balance, bet = get_bet(balance)
     if bet == 0:
         return balance
@@ -56,15 +56,15 @@ def play(rows, cols, symbols):
     return columns
 
 def print_screen(columns):
-    for row in range(len(columns[0])):
-        for i, column in enumerate(columns):
-            if i != len(columns) -1:
+    for row in range(3):
+        for i, column in enumerate(columns): # retrieve element in the row of each column
+            if i != len(columns) - 1: # if not at the end, print the element of the column followed by '|' to divide columns
                 print(column[row], end=" | ")
-            else:
+            else: # no divider, because at the end
                 print(column[row])
 
 
-def deposit():
+def deposit(): # how many chips you want to buy
     while True:
         amount = input("How many chips you like to buy? $")
         if amount.isdigit():
@@ -79,7 +79,7 @@ def deposit():
     return amount
 
 
-def get_bet(balance):
+def get_bet(balance): # get the bet from user
     while True:
         bet = input("Place your bets: \nA) [MIN]\nB) [10]\nC) [MAX]\nQ) [QUIT]\n")
         
@@ -120,14 +120,14 @@ def get_bet(balance):
 
 def check_result(columns, bet, values):
     winnings = 0
-    for line in range(3):
-        symbol = columns[0][line]
+    for row in range(3):
+        symbol = columns[0][row] # obtain the first symbol of each row of the first column
         for column in columns:
-            symbol_to_check = column[line]
-            if symbol != symbol_to_check:
+            symbol_to_check = column[row] #obtain symbol to check
+            if symbol != symbol_to_check: # compare first symbol in row to the rest of the symbols in the row
                 break
-        else:
-                winnings += values[symbol] * bet
+        else: #for-else = if no break occurs in the for loop, else executes after for loop completes
+                winnings += values[symbol] * bet # winnings += symbol value from dict * bet made
 
     return winnings
 
